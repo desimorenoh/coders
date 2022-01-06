@@ -1,8 +1,14 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+body {
+    font-family: monospace;
+}
 .bg-light {
     background-color: black!important;
 }
 .navbar-light .navbar-toggler-icon {
     background-image: url('../img/menuham.png')!important;
+
 }
 .navbar-toggler-icon {
     width: 2.5em!important;
@@ -11,3 +17,60 @@
     border-color: #FCEA83!important;
     color: #FCEA83!important;
 }
+.h1 {
+    text-align: center;
+
+}
+
+.fixed-bottom {
+    background-color: black;
+    height: 30px;
+    color: #FCEA83;
+    text-align: center;
+    align-self: center;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: #FCEA83!important;
+}
+.btn-outline-light {
+    color: #FCEA83;
+    border-color: #FCEA83;
+}
+.btn-outline-light:hover {
+    background-color: #FCEA83;
+    border-color: #a28d1b;
+}
+
+#mytable {
+    -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+    box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+    border: 5px inset #605c5c;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+    text-align: center;
+}
+.name {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 5px 0 5px 0;
+}
+
+#editar {
+    width: 50%;
+    padding: 20px;
+    background-color: #212529;
+    color: #FCEA83;
+    margin-left: 50%;
+    transform: translate(-50%);
+    -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+    box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+}
+#btn-2 {
+    padding: 10px 0 5px 0;
+    -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+    box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+}
+

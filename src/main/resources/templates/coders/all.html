@@ -6,7 +6,7 @@
 
 <section class="container">
     <h1 th:text="${title}"></h1>
-    <table>
+    <table class="table table-dark table-hover mb-5" id="mytable">
         <thead>
         <tr>
             <th>Id</th>
@@ -32,10 +32,10 @@
             <td th:text="${coder.direccion}"></td>
             <td th:text="${coder.promocion}"></td>
             <td>
-                <a class="btn" th:href="'/coders/edit/'+${coder.id}">Editar</a>
+                <a class="btn btn-outline-light" th:href="'/coders/edit/'+${coder.id}">Editar</a>
             </td>
             <td>
-                <a class="btn-delete" th:href="'/coders/delete/'+${coder.id}">Eliminar</a>
+                <a class="btn btn-outline-danger" th:href="'/coders/delete/'+${coder.id}">Eliminar</a>
             </td>
         </tr>
         </tbody>

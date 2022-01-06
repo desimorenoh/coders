@@ -4,12 +4,43 @@
 <body>
 <header th:replace="fragments/header"></header>
 
-<section class="container">
+<section class="container mb-5">
     <h1 th:text="${title}"></h1>
-    <form th:action="@{/coders/new}" th:object="${coder}" method="post">
-<!--        ejemplo para los inputs con thymeleaf-->
-<!--       <input th:field="*{title}" type="text" class="col-md6 form-control form-control-sm" id="title" placeholder="Enter title">-->
+    <form th:action="@{/coders/new}" th:object="${coder}" id="editar" method="post">
+        <input type="hidden" th:field="*{id}">
+        <div class="name">
+            <label for="name">Nombre:</label>
+            <input th:field="*{nombre} "type="text" id="name" name="name" placeholder="Ej: Marta"
+                   pattern="^[a-zA-ZÀ-ÿ\u00f1]+(\s*[a-zA-ZÀ-ÿ\u00f1]*)*[a-zA-ZÀ-ÿ\u00f1]+ ?$">
+
+            <label for="apellidos" style="padding: 5px 0 5px 0">Apellidos:</label>
+            <input th:field="*{apellidos}" type="text" id="apellidos" name="apellidos" placeholder="Sastre"
+                   pattern="^[a-zA-ZÀ-ÿ\u00f1]+(\s*[a-zA-ZÀ-ÿ\u00f1]*)*[a-zA-ZÀ-ÿ\u00f1]+ ?$">
+
+            <label for="edad" style="padding: 5px 0 5px 0">Edad:</label>
+            <input th:field="*{edad}" type="number" id="edad" name="edad" placeholder="45"
+                   pattern="[0-9]">
+
+            <label for="pais" style="padding: 5px 0 5px 0">País de Origen:</label>
+            <input th:field="*{paisDeOrigen}"type="text" id="pais" name="pais" placeholder="España"
+                   pattern="^[a-zA-ZÀ-ÿ\u00f1]+(\s*[a-zA-ZÀ-ÿ\u00f1]*)*[a-zA-ZÀ-ÿ\u00f1]+ ?$">
+
+            <label for="estudios" style="padding: 5px 0 5px 0">Nivel de estudios:</label>
+            <input th:field="*{nivelDeEstudios}"type="text" id="estudios" name="estudios" placeholder="Bachiller"
+                   pattern="^[a-zA-ZÀ-ÿ\u00f1]+(\s*[a-zA-ZÀ-ÿ\u00f1]*)*[a-zA-ZÀ-ÿ\u00f1]+ ?$">
+
+            <label for="address" style="padding: 5px 0 5px 0">Dirección:</label>
+            <input th:field="*{direccion}"type="text" id="address" name="address" placeholder="Calle Buena Vibra 50, 2-3, Barcelona, 08031"
+                   pattern="^\w+\s\w+\s\w+,?\s\d{1,4}\,?\s\d-?\w,?\s\w+,?\s\d{5}$">
+
+            <label for="promo" style="padding: 5px 0 5px 0">Promoción:</label>
+            <input th:field="*{promocion}"type="text" id="promo" name="promo" placeholder="FemTechP1"
+                   pattern="[a-zA-Z]+\s?[a-zA-Z0-9]+">
+            <br>
+            <input type="submit" id="btn-2">
+        </div>
     </form>
+
 </section>
 
 <footer th:replace="fragments/footer"></footer>
