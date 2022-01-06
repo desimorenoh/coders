@@ -6,7 +6,32 @@
 
 <section class="container">
     <h1 th:text="${title}"></h1>
-    <p th:text="${coders}"></p>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Edad</th>
+            <th>País de origen</th>
+            <th>Nivel de Estudios</th>
+            <th>Dirección</th>
+            <th>Promoción</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="coder: ${coders}">
+            <th scope="row" th:text="${coder.id}"></th>
+            <td th:text="${coder.nombre}"></td>
+            <td th:text="${coder.apellidos}"></td>
+            <td th:text="${coder.edad}"></td>
+            <td th:text="${coder.paisDeOrigen}"></td>
+            <td th:text="${coder.nivelDeEstudios}"></td>
+            <td th:text="${coder.direccion}"></td>
+            <td th:text="${coder.promocion}"></td>
+        </tr>
+        </tbody>
+    </table>
 </section>
 <footer th:replace="fragments/footer"></footer>
 </body>
