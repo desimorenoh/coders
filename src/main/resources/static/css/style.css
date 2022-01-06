@@ -1,0 +1,13 @@
+.bg-light {
+    background-color: black!important;
+}
+.navbar-light .navbar-toggler-icon {
+    background-image: url('../img/menuham.png')!important;
+}
+.navbar-toggler-icon {
+    width: 2.5em!important;
+}
+.navbar-light .navbar-toggler {
+    border-color: #FCEA83!important;
+    color: #FCEA83!important;
+}
