@@ -2,6 +2,7 @@ package org.factoriaf5.coders;
 
 import org.factoriaf5.coders.repositories.Coder;
 import org.factoriaf5.coders.repositories.CoderRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -19,7 +20,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 
 class ApplicationTests {
-
+    @BeforeEach
+    void setUp() {
+        coderRepository.deleteAll();
+    }
     @Autowired
     MockMvc mockMvc;
 
@@ -43,4 +47,5 @@ class ApplicationTests {
                 .andExpect(view().name("coders/all"))
                 .andExpect(model().attribute("coders", hasItem(coder)));
     }
+
 }
