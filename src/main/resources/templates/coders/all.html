@@ -3,7 +3,11 @@
 <head th:replace="fragments/head"></head>
 <body>
 <header th:replace="fragments/header"></header>
-<section class="container"><h2>Welcome to my page</h2></section>
+
+<section class="container">
+    <h1 th:text="${title}"></h1>
+    <p th:text="${coders}"></p>
+</section>
 <footer th:replace="fragments/footer"></footer>
 </body>
 </html>
