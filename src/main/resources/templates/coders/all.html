@@ -17,6 +17,8 @@
             <th>Nivel de Estudios</th>
             <th>Dirección</th>
             <th>Promoción</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
         </tr>
         </thead>
         <tbody>
@@ -29,6 +31,12 @@
             <td th:text="${coder.nivelDeEstudios}"></td>
             <td th:text="${coder.direccion}"></td>
             <td th:text="${coder.promocion}"></td>
+            <td>
+                <a class="btn" th:href="'/coders/edit/'+${coder.id}">Editar</a>
+            </td>
+            <td>
+                <a class="btn-delete" th:href="'/coders/delete/'+${coder.id}">Eliminar</a>
+            </td>
         </tr>
         </tbody>
     </table>

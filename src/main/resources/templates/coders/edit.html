@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head"></head>
+<body>
+<header th:replace="fragments/header"></header>
+
+<section class="container">
+    <h1 th:text="${title}"></h1>
+    <form th:action="@{/coders/new}" th:object="${coder}" method="post">
+<!--        ejemplo para los inputs con thymeleaf-->
+<!--       <input th:field="*{title}" type="text" class="col-md6 form-control form-control-sm" id="title" placeholder="Enter title">-->
+    </form>
+</section>
+
+<footer th:replace="fragments/footer"></footer>
+</body>
+</html>
