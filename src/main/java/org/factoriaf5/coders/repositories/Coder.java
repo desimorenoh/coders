@@ -17,12 +17,13 @@ public class Coder implements Serializable {
     private String nivelDeEstudios;
     private String direccion;
     private String promocion;
+    private String photoImage;
 
     public Coder() {
 
     }
 
-    public Coder(String nombre, String apellidos, int edad, String paisDeOrigen, String nivelDeEstudios, String direccion, String promocion) {
+    public Coder(String nombre, String apellidos, int edad, String paisDeOrigen, String nivelDeEstudios, String direccion, String promocion, String photoImage) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.edad = edad;
@@ -30,6 +31,7 @@ public class Coder implements Serializable {
         this.nivelDeEstudios = nivelDeEstudios;
         this.direccion = direccion;
         this.promocion = promocion;
+        this.photoImage = photoImage;
     }
 
     public Long getId() {
@@ -95,6 +97,16 @@ public class Coder implements Serializable {
     public void setPromocion(String promocion) {
         this.promocion = promocion;
     }
+
+    public String getPhotoImage() {
+        return photoImage;
+    }
+
+    public void setPhotoImage(String photoImage) {
+        this.photoImage = photoImage;
+    }
+
+
     @Override
     public String toString() {
         return "Coder{" +
@@ -108,16 +120,17 @@ public class Coder implements Serializable {
                 ", promocion='" + promocion + '\'' +
                 '}';
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Coder coder = (Coder) o;
-        return Objects.equals(id, coder.id) && Objects.equals(nombre, coder.nombre) && Objects.equals(apellidos, coder.apellidos) && Objects.equals(edad, coder.edad) && Objects.equals(paisDeOrigen, coder.paisDeOrigen) && Objects.equals(nivelDeEstudios, coder.nivelDeEstudios) && Objects.equals(direccion, coder.direccion) && Objects.equals(promocion, coder.promocion);
+        return Objects.equals(id, coder.id) && Objects.equals(nombre, coder.nombre) && Objects.equals(apellidos, coder.apellidos) && Objects.equals(edad, coder.edad) && Objects.equals(paisDeOrigen, coder.paisDeOrigen) && Objects.equals(nivelDeEstudios, coder.nivelDeEstudios) && Objects.equals(direccion, coder.direccion) && Objects.equals(promocion, coder.promocion) && Objects.equals(photoImage, coder.photoImage);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, apellidos, edad, paisDeOrigen, nivelDeEstudios, direccion, promocion);
+        return Objects.hash(id, nombre, apellidos, edad, paisDeOrigen, nivelDeEstudios, direccion, promocion, photoImage);
     }
 }

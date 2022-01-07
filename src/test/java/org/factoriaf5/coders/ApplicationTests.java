@@ -46,7 +46,7 @@ class ApplicationTests {
     @Test
     void returnsTheExistingCoders() throws Exception {
 
-        Coder coder = coderRepository.save(new Coder("Desirée", "Moreno Hernández", 42, "Venezuela", "Técnico Superior", "Calle Lletres 24, 1-2 Barcelona", "Femtech P2"));
+        Coder coder = coderRepository.save(new Coder("Desirée", "Moreno Hernández", 42, "Venezuela", "Técnico Superior", "Calle Lletres 24, 1-2 Barcelona", "Femtech P2", "https://pbs.twimg.com/profile_images/1337757611698032641/DBFJ-khl_400x400.jpg"));
 
         mockMvc.perform(get("/coders"))
                 .andExpect(status().isOk())
@@ -71,6 +71,7 @@ class ApplicationTests {
                         .param("nivelDeEstudios", "Técnico Superior")
                         .param("dirección", "Calle Lletres 24, 1-2 Barcelona")
                         .param("promoción", "Femtech P2")
+                        .param("photoImage", "https://pbs.twimg.com/profile_images/1337757611698032641/DBFJ-khl_400x400.jpg")
                 )
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/coders"))
@@ -84,12 +85,13 @@ class ApplicationTests {
                 hasProperty("paisDeOrigen", equalTo("Venezuela")),
                 hasProperty("nivelDeEstudios", equalTo("Técnico Superior")),
                 hasProperty("dirección", equalTo("Calle Lletres 24, 1-2 Barcelona")),
-                hasProperty("promoción", equalTo("Femtech P2"))
+                hasProperty("promoción", equalTo("Femtech P2")),
+                hasProperty("photoImage", equalTo("https://pbs.twimg.com/profile_images/1337757611698032641/DBFJ-khl_400x400.jpg"))
         )));
     }
     @Test
     void returnsAFormToEditCoders() throws Exception {
-        Coder coder = coderRepository.save(new Coder("Desirée", "Moreno Hernández", 42, "Venezuela", "Técnico Superior", "Calle Lletres 24, 1-2 Barcelona", "Femtech P2"));
+        Coder coder = coderRepository.save(new Coder("Desirée", "Moreno Hernández", 42, "Venezuela", "Técnico Superior", "Calle Lletres 24, 1-2 Barcelona", "Femtech P2", "https://pbs.twimg.com/profile_images/1337757611698032641/DBFJ-khl_400x400.jpg"));
         mockMvc.perform(get("/coders/edit/" + coder.getId()))
                 .andExpect(status().isOk())
                 .andExpect(view().name("coders/edit"))
@@ -98,11 +100,24 @@ class ApplicationTests {
     }
     @Test
     void allowsToDeleteACoder() throws Exception {
-        Coder coder = coderRepository.save(new Coder("Desirée", "Moreno Hernández", 42, "Venezuela", "Técnico Superior", "Calle Lletres 24, 1-2 Barcelona", "Femtech P2"));
+        Coder coder = coderRepository.save(new Coder("Desirée", "Moreno Hernández", 42, "Venezuela", "Técnico Superior", "Calle Lletres 24, 1-2 Barcelona", "Femtech P2", "https://pbs.twimg.com/profile_images/1337757611698032641/DBFJ-khl_400x400.jpg"));
         mockMvc.perform(get("/coders/delete/" + coder.getId()))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/coders"));
 
         assertThat(coderRepository.findById(coder.getId()), equalTo(Optional.empty()));
+    }
+    @Test
+    void allowsToSearchCodersbyName() throws Exception {
+
+        Coder bookWithWord = coderRepository.save(new Coder("Desirée", "Moreno Hernández", 42, "Venezuela", "Técnico Superior", "Calle Lletres 24, 1-2 Barcelona", "Femtech P2", "https://pbs.twimg.com/profile_images/1337757611698032641/DBFJ-khl_400x400.jpg"));
+        Coder coderWithoutWord = coderRepository.save(new Coder("Ana", "Casas", 35, "Venezuela", "Modelo", "Calle Catalunya 22, 2-D,Barcelona", "Femtech P1", "/img/coder5.png"));
+
+        mockMvc.perform(get("/coders/search?word=Desirée"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("coders/all"))
+                .andExpect(model().attribute("title", equalTo("Coders containing \"Desirée\"")))
+                .andExpect(model().attribute("coders", hasItem(bookWithWord)))
+                .andExpect(model().attribute("coders", not(hasItem(coderWithoutWord))));
     }
 }

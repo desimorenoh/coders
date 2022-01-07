@@ -10,6 +10,7 @@
         <thead>
         <tr>
             <th>Id</th>
+            <th>Foto</th>
             <th>Nombre</th>
             <th>Apellidos</th>
             <th>Edad</th>
@@ -24,6 +25,7 @@
         <tbody>
         <tr th:each="coder: ${coders}">
             <th scope="row" th:text="${coder.id}"></th>
+            <th img th:src="${coder.photoImage}"></th>
             <td th:text="${coder.nombre}"></td>
             <td th:text="${coder.apellidos}"></td>
             <td th:text="${coder.edad}"></td>

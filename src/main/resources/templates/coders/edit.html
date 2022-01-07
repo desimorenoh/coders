@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head"></head>
-<body>
+<body id="editbody">
 <header th:replace="fragments/header"></header>
 
 <section class="container mb-5">
@@ -36,6 +36,10 @@
             <label for="promo" style="padding: 5px 0 5px 0">Promoción:</label>
             <input th:field="*{promocion}"type="text" id="promo" name="promo" placeholder="FemTechP1"
                    pattern="[a-zA-Z]+\s?[a-zA-Z0-9]+">
+
+            <label for="photo" style="padding: 5px 0 5px 0">Foto:</label>
+            <input th:field="*{photoImage}"type="url" id="photo" name="promo" placeholder="escriba URL"
+                   pattern="^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$">
             <br>
             <input type="submit" id="btn-2">
         </div>

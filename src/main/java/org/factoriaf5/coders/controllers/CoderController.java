@@ -5,10 +5,7 @@ import org.factoriaf5.coders.repositories.CoderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -55,5 +52,21 @@ public class CoderController {
     String remove(@PathVariable Long id) {
         coderRepository.deleteById(id);
         return "redirect:/coders";
+    }
+    @GetMapping("/home")
+    String listCodersOnHome(Model model, @RequestParam(required = false) String category) {
+        List<Coder> coders = (List<Coder>) coderRepository.findAll();
+        model.addAttribute("title", "Nuestras Coders");
+        model.addAttribute("coders", coders);
+        return "coders/front";
+    }
+    @GetMapping("/coders/search")
+    String searchCoder(@RequestParam String word, Model model) {
+        List<Coder> coders = coderRepository.findCoderByNombreContaining(word);
+        model.addAttribute("nombre", String.format("Coders containing \"%s\"", word));
+        model.addAttribute("coders", coders);
+//        model.addAttribute("categories", categoryRepository.findAll());
+
+        return "coders/front";
     }
 }
