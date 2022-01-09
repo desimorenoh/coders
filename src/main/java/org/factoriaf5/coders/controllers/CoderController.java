@@ -44,7 +44,7 @@ public class CoderController {
     String editCoder(Model model, @PathVariable Long id){
         Coder coder = coderRepository.findById(id).get();
         model.addAttribute("coder", coder);
-        model.addAttribute("title", "Editar coder");
+        model.addAttribute("title", "Editar Coder");
         return "coders/edit";
     }
 
